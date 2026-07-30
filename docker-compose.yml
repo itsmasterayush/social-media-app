@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: ./server
+    container_name: social-app-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env
+  frontend:
+    build:
+      context: ./client
+    container_name: social-app-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
